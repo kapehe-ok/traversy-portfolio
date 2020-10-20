@@ -16,7 +16,8 @@ export default function Content() {
           asset->{
             _id,
             url
-          }
+          },
+          alt
         }
       }`
       )
@@ -25,40 +26,42 @@ export default function Content() {
   }, []);
 
   return (
-    <div className="bg-green-100 min-h-screen p-12">
-      <div className="container mx-auto">
-        <h2 className="text-5xl flex justify-center cursive">
+    <main className="bg-green-100 min-h-screen p-12">
+      <section className="container mx-auto">
+        <h1 className="text-5xl flex justify-center cursive">
           My Content Page!
-        </h2>
-        <h3 className="text-lg text-gray-600 flex justify-center mb-12">
+        </h1>
+        <h2 className="text-lg text-gray-600 flex justify-center mb-12">
           Welcome to my page of content
-        </h3>
+        </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {contentData &&
             contentData.map((content, index) => (
-              <Link
-                to={"/content/" + content.slug.current}
-                key={content.slug.current}
-              >
-                <span
-                  className="block h-64 relative rounded shadow leading-snug bg-white border-l-8 border-green-400"
-                  key={index}
+              <article>
+                <Link
+                  to={"/content/" + content.slug.current}
+                  key={content.slug.current}
                 >
-                  <img
-                    src={content.mainImage.asset.url}
-                    alt={content.title}
-                    className="w-full h-full rounded-r object-cover absolute"
-                  />
-                  <span className="block relative h-full flex justify-end items-end pr-4 pb-4">
-                    <h2 className="text-gray-800 text-lg font-bold px-3 py-4 bg-red-700 text-red-100 bg-opacity-75 rounded">
-                      {content.title}
-                    </h2>
+                  <span
+                    className="block h-64 relative rounded shadow leading-snug bg-white border-l-8 border-green-400"
+                    key={index}
+                  >
+                    <img
+                      src={content.mainImage.asset.url}
+                      alt={content.mainImage.alt}
+                      className="w-full h-full rounded-r object-cover absolute"
+                    />
+                    <span className="block relative h-full flex justify-end items-end pr-4 pb-4">
+                      <h3 className="text-gray-800 text-lg font-bold px-3 py-4 bg-red-700 text-red-100 bg-opacity-75 rounded">
+                        {content.title}
+                      </h3>
+                    </span>
                   </span>
-                </span>
-              </Link>
+                </Link>
+              </article>
             ))}
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
