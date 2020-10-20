@@ -16,10 +16,6 @@ export default {
       type: "string",
     },
     {
-      name: "language",
-      type: "string",
-    },
-    {
       name: "description",
       type: "text",
     },

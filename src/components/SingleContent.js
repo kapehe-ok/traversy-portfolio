@@ -3,23 +3,11 @@ import { useParams } from "react-router-dom";
 import sanityClient from "../client.js";
 import imageUrlBuilder from "@sanity/image-url";
 import BlockContent from "@sanity/block-content-to-react";
-import getYouTubeId from "get-youtube-id";
-import YouTube from "react-youtube";
 
 const builder = imageUrlBuilder(sanityClient);
 function urlFor(source) {
   return builder.image(source);
 }
-
-const serializers = {
-  types: {
-    youtube: ({ node }) => {
-      const { url } = node;
-      const id = getYouTubeId(url);
-      return <YouTube videoId={id} />;
-    },
-  },
-};
 
 export default function SingleContent() {
   const [singleContent, setSingleContent] = useState(null);
@@ -79,7 +67,6 @@ export default function SingleContent() {
         </div>
         <div className="px-16 lg:px-48 py-12 lg:py-20 prose lg:prose-xl max-w-full">
           <BlockContent
-            serializers={serializers}
             blocks={singleContent.body}
             projectId="ph4hgpxb"
             dataset="production"

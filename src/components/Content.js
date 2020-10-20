@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../client.js";
+import groq from "groq";
 
 export default function Content() {
   const [contentData, setContent] = useState(null);
@@ -8,7 +9,7 @@ export default function Content() {
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "content"]{
+        groq`*[_type == "content"]{
         title,
         slug,
         mainImage{

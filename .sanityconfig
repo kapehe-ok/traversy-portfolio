@@ -1,0 +1,13 @@
+{
+  "extensions": {
+    "endpoints": {
+      "Your Sanity GROQ Engine Endpoint": {
+        "url": "https://mynewportfolio.sanity.studio/desk",
+        "headers": {
+          "projectId": "ph4hgpxb",
+          "dataset": "production"
+        }
+      }
+    }
+  }
+}
